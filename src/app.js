@@ -6,7 +6,6 @@
 //These are default imports
 import React from 'react'
 import ReactDOM from 'react-dom';
-import IndecisionApp from './components/IndecisionApp';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss';
 
@@ -108,7 +107,7 @@ const newGetGreeting = newSyntax.getGreeting;
 
 console.log(newGetGreeting());
 
-ReactDOM.render(<IndecisionApp options = {['Distribute cards', 'Rum 10 kms']}/> , document.getElementById('main-div'));
+ReactDOM.render(<p>This is where we will start building the expensify app    </p> , document.getElementById('main-div'));
 
 
 
