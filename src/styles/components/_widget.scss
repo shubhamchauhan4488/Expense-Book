@@ -1,0 +1,22 @@
+.widget-header{
+    background: lighten($color: $dark-blue, $amount: 5%);
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size;
+    color: $light-purple;
+}
+.widget-header__title{
+    margin :0
+    //to remove the by-default margin of H3
+}
+.widget-header__options{
+    margin-bottom: $l-size;
+    background: lighten($color: $dark-blue, $amount: 15%);
+}
+.widget-message{
+    color: $light-purple;
+    text-align: center;
+    padding : $s-size;
+    margin : 0;
+    border-bottom: 1px solid lighten($color: $dark-blue, $amount: 22%)
+}

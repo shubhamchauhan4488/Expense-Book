@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- //Ensures that correct encoding is used when the app is viewed in the browser -->
+        <meta name= "viewport" content = "width=device-width, initial-scale = 1">
+        <title>Indecision App</title>
+        <link rel = "icon" type ="image/png" href = "./favicon.png"/>
+        <!-- //rel defines the relationship -->
+    </head>
+    <body>
+        <div id = "main-div"></div>
+
+        <!-- After adding webpack we can remove the react and reactdom scripts  -->
+        <!-- <script src = "https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+        <script src = "https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script> -->
+        <!-- React is used in different context like wecan use React-VR for virtual reality, react-native for native applcation. 
+        Here we are using with the browser so we need the DOM -->
+
+        <!-- After adding webpack we need to change this as now all scripts are in bundle.js -->
+        <!-- <script src = "/scripts/app.js"></script> -->
+
+        <script src = "/bundle.js"></script>
+    </body>
+</html>

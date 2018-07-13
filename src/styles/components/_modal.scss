@@ -1,0 +1,41 @@
+//Targeting all 'direct' descendents divs as oposed to being children of children
+.ReactModalPortal > div {
+    //Even before the modal appears
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition : opacity 200ms ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+.ReactModalPortal .ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+.modal{
+    background: $dark-blue;
+    padding: $m-size;
+    text-align: center;
+    color : white;
+    max-width: 30rem;
+    outline : none;
+}
+
+.modal__title{ 
+    font-weight: 300;
+    margin : 0 0 $s-size 0;
+}
+
+.modal__body{
+    font-size: 2rem;
+    font-weight: bold;
+    word-break : break-all;
+    margin : 0 0 $l-size 0;
+    
+}

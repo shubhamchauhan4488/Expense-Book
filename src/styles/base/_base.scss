@@ -1,0 +1,23 @@
+//'_' is written for defining a partial file 
+//Here body file will contain all the major styling lke font-color and size 
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family:Helvetica, Arial, sans-serif;
+    font-size: $s-size;
+    background: $dark-blue;
+}
+
+//We will be dealing with 'rem' and not px b'cause rem is more useful for accessibility devices
+// 1 rem = 16 px
+// setting font size = 62.5% means 
+// 16*0.625 = 10 so whenever we will use 1.1 rem = 11px 2.3 rem = 23px
+
+button {
+    cursor: pointer;
+}
+
+button:disabled{
+    cursor: default;
+}
