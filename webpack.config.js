@@ -33,6 +33,9 @@ module.exports = {
     //so even if we delete the bundle.js the app will still run
     //Whenever we want the bundle.js we can run : yarn build (to run webpack)
     devServer : {
-        contentBase :  path.join(__dirname, 'public')
+        contentBase :  path.join(__dirname, 'public'),
+        historyApiFallback : true
+        // historyApiFallback : true means that we will be handling the routing using our client side code 
+        //We command to serve up index.html everytime and let reat-route figure out routes
     }
 };
