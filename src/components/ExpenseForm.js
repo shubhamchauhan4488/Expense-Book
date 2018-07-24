@@ -7,13 +7,26 @@ const now = moment();
 console.log(now.format('MMMM Do, YYYY'));
 
 export default class ExpenseForm extends React.Component {
-    state = {
-        description : '',
-        note : '',
-        amount : '',
-        createdAt : moment(),
-        calenderFocused  : false
+
+    constructor(props){
+        super(props)
+        this.state = {
+            description : props.expense ? props.expense.description : '',
+            note : props.expense ? props.expense.note : '',
+            amount : props.expense ? (props.expense.amount/100).toString() : '',
+            createdAt : props.expense ? moment(props.expense.createdAt) :moment(),
+            calenderFocused  : false,
+            error : ''
+        }
     }
+    // state = {
+    //     description : '',
+    //     note : '',
+    //     amount : '',
+    //     createdAt : moment(),
+    //     calenderFocused  : false,
+    //     error : ''
+    // }
     onDescriptionChange = (e) => {
         const description = e.target.value
         this.setState(() => {
@@ -64,12 +77,39 @@ export default class ExpenseForm extends React.Component {
             }
         })
     }
+    onSubmit = (e) => {
+        e.preventDefault()
+        if(!this.state.description || !this.state.amount){
+            this.setState(() => {
+                return {
+                    error : 'Please enter both description and amount'
+                }
+            })
+        }else{
+            this.setState(() => {
+                return {
+                    error : ''
+                }
+            })
+            console.log("error cleared")
+        //accessing the onSubmit function which is passed as props from <addexpense> and 
+        //passing the new expense to the <Addexpense> so that it can be added to redux store
+        this.props.onSubmit({
+                description : this.state.description,
+                amount : (parseFloat(this.state.amount, 10))*100,
+                note : this.state.note,
+                createdAt : this.state.createdAt.valueOf()
+            })
+       
+    }
+}
     
 
     render(){
         return(
             <div>
-            <form>
+            {this.state.error && <p>{this.state.error}</p>}
+            <form onSubmit = {this.onSubmit}>
             <input
             type = "text"
             placeholder = 'Description'
