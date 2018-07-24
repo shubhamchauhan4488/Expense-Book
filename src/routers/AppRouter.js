@@ -18,12 +18,13 @@ const AppRouter = () => (
     <Switch>
         <Route path = "/" component = {ExpenseDashboardPage} exact = {true}/> 
         <Route path = "/create" component = {AddExpensePage} /> 
-        <Route path = "/edit" component = {EditExpensePage} /> 
+        <Route path = "/edit/:id" component = {EditExpensePage} /> 
         <Route path = "/help" component = {HelpPage} /> 
         <Route component = {NotFoundPage} />
     </Switch>
     </div>
     </BrowserRouter>
 )
+// :id this way we can  pass params in props and access using props.match.params.id
 
 export default AppRouter;
