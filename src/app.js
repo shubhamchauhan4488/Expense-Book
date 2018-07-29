@@ -18,9 +18,9 @@ import 'react-dates/lib/css/_datepicker.css'
 
 
 const store = configureStore();
-store.dispatch(addExpense( {description : 'Gas Bill', amount : '5555', createdAt : 908049}))
-store.dispatch(addExpense( {description : 'Internet Bill', amount : '4455', createdAt : 432389}))
-store.dispatch(addExpense( {description : 'Rent', amount : '110000', createdAt : 209328}))
+// store.dispatch(addExpense( {description : 'Gas Bill', amount : '5555', createdAt : 908049}))
+// store.dispatch(addExpense( {description : 'Internet Bill', amount : '4455', createdAt : 432389}))
+// store.dispatch(addExpense( {description : 'Rent', amount : '110000', createdAt : 209328}))
 console.log(store.getState());
 
 
@@ -31,9 +31,9 @@ console.log(store.getState());
 //     store.dispatch(setTextFilter('bill'))
 // }, 4000)
 
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
-console.log(visibleExpenses)
+// const state = store.getState();
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
+// console.log(visibleExpenses)
 
 //this is just a variable returning some jsx , not a stateless functional component
 const jsx = (
