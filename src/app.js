@@ -42,7 +42,7 @@ const jsx = (
     </Provider>
 )
 
-
+console.log('test')
 ReactDOM.render(jsx , document.getElementById('main-div'));
 
 
