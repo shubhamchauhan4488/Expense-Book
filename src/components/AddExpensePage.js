@@ -3,19 +3,47 @@ import ExpenseForm from './ExpenseForm'
 import { connect } from "react-redux";
 import { addExpense } from '../actions/expenses';
 
-const AddExpensePage = (props) => (
-    <div>
-    This is from AddExpensePage
-    <ExpenseForm 
-    onSubmit = {(expense) => {
+
+// const AddExpensePage = (props) => (
+//     <div>
+//     This is from AddExpensePage
+//     <ExpenseForm 
+//     onSubmit = {(expense) => {
+//         console.log(expense)
+//         props.dispatch(addExpense(expense));
+//         props.history.push('/')
+//     }}
+//     />
+//     </div>
+// )
+// // props.history.push('/') : to switch to pages without reloading the page
+// export default connect()(AddExpensePage)
+
+//For testing we will modify the component : New class component:
+export class AddExpensePage extends React.Component{
+    onSubmit = (expense) => {
         console.log(expense)
-        props.dispatch(addExpense(expense));
-        props.history.push('/')
-    }}
-    />
-    </div>
-)
+        this.props.addExpense(expense) //calling the addExpense inside mapDispatchToProps for dispatch handling
+        this.props.history.push('/')
+    }
+    render(){
+        return  (
+            <div>
+            This is from AddExpensePage
+            <ExpenseForm 
+            onSubmit = {this.onSubmit}
+            />
+            </div>
+        )
+    }
+}
 
-// props.history.push('/') : to switch to pages without reloading the page
+//this function wwe will use to handle the dispatch here itself, instead of handling at:
+// props.dispatch(addExpense(expense));
+// we do this b'cause while testing we will have to pass spy fn
+// and in this case we have to pass a component in a spy fn which will come out ot be very complex
+const mapDispatchToProps = (dispatch) => ({
+    addExpense : (expense) => dispatch(addExpense(expense))
+})
 
-export default connect()(AddExpensePage)
+export default connect(undefined, mapDispatchToProps)(AddExpensePage)

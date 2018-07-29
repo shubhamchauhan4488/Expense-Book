@@ -3,14 +3,19 @@ import { connect } from 'react-redux'
 import ExpenseListItem from './ExpenseListItem'
 import getVisibleExpenses from "../selectors/expenses";
 
-const ExpenseList = (props) => (
+//we are exporting this separately b'cause we need an un-connected component for testing, it should not be connected to the store
+export const ExpenseList = (props) => (
     <div>
-        <h3>  Expenses   </h3>
-            {props.expenses.map((expense) => {
+        {props.expenses.length === 0 ? (
+            <p>No Expenses to display</p>
+        ) : (
+            props.expenses.map((expense) => {
                 return(
                     <ExpenseListItem key = {expense.id} {...expense}></ExpenseListItem>
               )
-            })}
+            })
+        )}
+            
    
     </div>
 )

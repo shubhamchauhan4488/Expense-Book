@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import { SingleDatePicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
 
 const now = moment();
 console.log(now.format('MMMM Do, YYYY'));
@@ -10,6 +9,8 @@ export default class ExpenseForm extends React.Component {
 
     constructor(props){
         super(props)
+        //While testing moment() will result in a different result from what was in the previos snapshot,
+        //So testing willl fail , hence we mock moment.js 
         this.state = {
             description : props.expense ? props.expense.description : '',
             note : props.expense ? props.expense.note : '',

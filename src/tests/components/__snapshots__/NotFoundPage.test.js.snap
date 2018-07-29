@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render Header correctly 1`] = `
+<div>
+  Error 404! Page not found. 
+  <NavLink
+    activeClassName="is-active"
+    ariaCurrent="true"
+    to="/"
+  >
+    Dashboard 
+  </NavLink>
+</div>
+`;

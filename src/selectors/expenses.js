@@ -16,7 +16,7 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate}) => {
         if (sortBy === 'date'){
             return a.createdAt < b.createdAt ? 1 : -1 //meaning most recent will appear first : here , 'b'
         }else if(sortBy === 'amount') {
-            return a.amount > b.amount ? 1 : -1 //greater amount comes first 
+            return a.amount < b.amount ? 1 : -1 //greater amount comes first 
         }
     })
 
