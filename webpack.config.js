@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 console.log(path.join(__dirname, 'public'));
 
 module.exports = (env) => {
+    console.log('env',env)
     const isProduction = env === 'production'
     const cssExtract = new ExtractTextPlugin('styles.css')//styles.css will be the filename where the styles will go
     return {
@@ -57,7 +58,7 @@ module.exports = (env) => {
         ],
         // devtool : isProduction ? 'sourcemap' : 'cheap-module-eval-source-map', //cheap-module-eval-source-map doesnt work with css files and hence any error will not point correctly
         devtool : isProduction ? 'source-map' : 'inline-source-map',
-        
+
         //devserver genrates its own bundle.js file dynamically and does not produce any physical file and serves it up and this is what makes it quicker
         //so even if we delete the bundle.js the app will still run
         //Whenever we want the bundle.js we can run : yarn build (to run webpack)
