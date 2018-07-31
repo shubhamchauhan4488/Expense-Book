@@ -64,15 +64,15 @@ const mapStateToProps = (state) => {
     console.log(state.filters)
     return {
         filters : state.filters
-    }
+    }   
 }
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
     setTextFilter : (textValue) => {dispatch(setTextFilter(textValue))},
-    sortByDate : () => {dispatch(sortByDate())},
-    sortByAmount : () => {dispatch(sortByAmount())},
-    setStartDate : (startDate) => {dispatch(setStartDate(startDate))},
-    setStartDate : (setEndDate) => {dispatch(setStartDate(setEndDate))}
+    sortByDate : () => dispatch(sortByDate()),
+    sortByAmount : () => dispatch(sortByAmount()),
+    setStartDate : (startDate) => dispatch(setStartDate(startDate)),
+    setEndDate : (endDate) => dispatch(setEndDate(endDate))
 })
 
 const ConnectedExpenseListFilters = connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters)
