@@ -14,7 +14,7 @@ module.exports = (env) => {
         //Refer to webpack.js.org
         entry : './src/app.js',
         output : {
-            path : path.join(__dirname, 'public'), //where do we want to put the webpack file i.e bundle.js
+            path : path.join(__dirname, 'public', 'dist'), //where do we want to put the webpack file i.e bundle.js
             //The paath is the absolute path that we need to specify and it is differnt for different machines and users.
             //SO we use console.log(__dirname); then node function path.join() to get to the public folder through string concat
             filename : 'bundle.js' // we can specify any name 
@@ -64,9 +64,10 @@ module.exports = (env) => {
         //Whenever we want the bundle.js we can run : yarn build (to run webpack)
         devServer : {
             contentBase :  path.join(__dirname, 'public'),
-            historyApiFallback : true
+            historyApiFallback : true,
             // historyApiFallback : true means that we will be handling the routing using our client side code 
             //We command to serve up index.html everytime and let reat-route figure out routes
+            publicPath : '/dist/'
         }
 }
 }
