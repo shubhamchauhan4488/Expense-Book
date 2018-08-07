@@ -5,12 +5,12 @@ import { AddExpensePage }from "../../components/AddExpensePage";
 
 
 //refer to jest globals : increases reusbalility of code
-let addExpenseSpy, historySpy, wrapper
+let startAddExpenseSpy, historySpy, wrapper
 //this will be callled before every test case is called for expect
 beforeEach(() => {
-     addExpenseSpy = jest.fn();
+    startAddExpenseSpy = jest.fn();
      historySpy = { push : jest.fn() };
-     wrapper = shallow(<AddExpensePage addExpense = {addExpenseSpy} history = {historySpy} />)
+     wrapper = shallow(<AddExpensePage startAddExpense = {startAddExpenseSpy} history = {historySpy} />)
 })
 
 test("should render expense page correctly", ()=>{
@@ -20,7 +20,7 @@ test("should render expense page correctly", ()=>{
 test("should run onSubmit correctly", ()=>{
     wrapper.find('ExpenseForm').prop('onSubmit')(expensesArray[1]);
     expect(historySpy.push).toHaveBeenLastCalledWith('/')
-    expect(addExpenseSpy).toHaveBeenLastCalledWith(expensesArray[1])
+    expect(startAddExpenseSpy).toHaveBeenLastCalledWith(expensesArray[1])
     expect(wrapper).toMatchSnapshot()
 })
 

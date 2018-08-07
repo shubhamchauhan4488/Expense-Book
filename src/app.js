@@ -15,6 +15,9 @@ import getVisibleExpenses from './selectors/expenses'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import 'react-dates/lib/css/_datepicker.css'
+//Just to check the connection to firebase : 
+import './firebase//firebase'
+// import './playground/promises'
 
 
 const store = configureStore();
@@ -42,7 +45,6 @@ const jsx = (
     </Provider>
 )
 
-console.log('test')
 ReactDOM.render(jsx , document.getElementById('main-div'));
 
 

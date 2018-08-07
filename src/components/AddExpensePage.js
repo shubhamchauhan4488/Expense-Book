@@ -1,7 +1,7 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm'
 import { connect } from "react-redux";
-import { addExpense } from '../actions/expenses';
+import { startAddExpense } from '../actions/expenses';
 
 
 // const AddExpensePage = (props) => (
@@ -23,7 +23,7 @@ import { addExpense } from '../actions/expenses';
 export class AddExpensePage extends React.Component{
     onSubmit = (expense) => {
         console.log(expense)
-        this.props.addExpense(expense) //calling the addExpense inside mapDispatchToProps for dispatch handling
+        this.props.startAddExpense(expense) //calling the addExpense inside mapDispatchToProps for dispatch handling
         this.props.history.push('/')
     }
     render(){
@@ -43,7 +43,7 @@ export class AddExpensePage extends React.Component{
 // we do this b'cause while testing we will have to pass spy fn
 // and in this case we have to pass a component in a spy fn which will come out ot be very complex
 const mapDispatchToProps = (dispatch) => ({
-    addExpense : (expense) => dispatch(addExpense(expense))
+    startAddExpense : (expense) => dispatch(startAddExpense(expense))
 })
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage)
