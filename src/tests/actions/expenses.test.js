@@ -1,11 +1,29 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from "redux-thunk";
-import { startAddExpense, addExpense, editExpense, removeExpense } from '../../actions/expenses'
+import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses, startRemoveExpense, startEditExpense } from '../../actions/expenses'
 import expensesArray from '../testData/expenses'
 import database from '../../firebase/firebase'
 // test("Should test add expense actin object")
 
 const createMockStore = configureMockStore([thunk]) //passing the middleware that we are using
+
+beforeEach((done) =>{
+    const expensesFirebaseData = {}
+    expensesArray.forEach(( { id,description,amount,note,createdAt } ) => {
+        expensesFirebaseData[id] = {
+            id : id,
+            description : description,
+            amount : amount,
+            note : note,
+            createdAt : createdAt
+        }
+    })
+    //To allow the beforeEach to wait for data pushing to firebase
+    database.ref('expenses').set(expensesFirebaseData).then(() => {
+    done();
+    })
+})
+
 
 //toEqual is used to compare all the properties in side an object 
 // if we use === it will not work, as {} === {} also returns false
@@ -15,6 +33,23 @@ test("Should setup remove expense action object", () => {
         type : 'RemoveExpense',
         expenseID: '123asdf'
     })
+})
+test("Should remove expense from firebase", (done) => {
+    const id = expensesArray[2].id
+    const store = createMockStore({});
+    store.dispatch(startRemoveExpense(id)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type : 'RemoveExpense',
+            expenseID : id
+        })
+    //'return' for chaining promise with 'then((sanpshot))
+    return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    })
+   
 })
 
 
@@ -26,6 +61,28 @@ test("Should setup edit expense action object", () => {
         updates : { amount : 2143 }
     })
 })
+test("Should edit expense on firebase", (done) => {
+    const store = createMockStore({});
+    const actions = store.getActions();
+    // const updates = { amount : 1234 }
+    store.dispatch(startEditExpense(expensesArray[2].id, expensesArray[2])).then(() => {
+        expect(actions[0]).toEqual({
+            type : 'EditExpense',
+            id : expensesArray[2].id,
+            updates : expensesArray[2]
+        })
+        return database.ref(`expenses/${expensesArray[2].id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual({
+            id : expensesArray[2].id,
+            ...expensesArray[2]
+        })
+        done(); 
+    })
+
+
+})
+
 
 test("Should setup add expense action object WITH provided values", () =>{
     const expenseObjectData = expensesArray[2];
@@ -112,6 +169,28 @@ test("Should add expense to database and redux store WITH DEFAULT values", (done
         console.log("ERROR IS HERE ::::", e )
         })
 })
+
+test("Should setup set expense action object with data passed", () => {
+    const result = setExpenses(expensesArray);
+    expect(result).toEqual({
+        type : 'SetExpenses',
+        expenses : expensesArray
+    })
+})
+
+test("Should fetch the data from firebase", (done) => {
+    const store = createMockStore({});
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+
+        // This is where the beforeEach will com into play. 
+        expect(actions[0]).toEqual({
+            type : 'SetExpenses',
+            expenses : expensesArray
+        }); 
+        done();
+    });
+});
 
 
 // test("Should setup add expense action object WITH default values", () =>{

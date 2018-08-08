@@ -71,3 +71,13 @@ test("should remove expense provided we DONT give valid ID", () =>{
     const result = expensesReducer(expensesArray, removeExpenseActionObject);
     expect(result).toEqual( expensesArray );
 })
+
+test("Should test set expense reducer", () => {
+    const setExpenseActionObject = {
+        type : 'SetExpenses',
+        expenses : [expensesArray[1]]
+    }
+
+    const result = expensesReducer(expensesArray, setExpenseActionObject)
+    expect(result).toEqual( [expensesArray[1]] );
+})

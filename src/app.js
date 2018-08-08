@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss';
 import AppRouter from './routers/AppRouter'
-import { addExpense } from './actions/expenses'
+import { startSetExpenses } from './actions/expenses'
 import { setTextFilter } from './actions/filters'
 import getVisibleExpenses from './selectors/expenses'
 import configureStore from './store/configureStore'
@@ -44,7 +44,11 @@ const jsx = (
         <AppRouter/>
     </Provider>
 )
+ReactDOM.render(<p>Loading...</p> , document.getElementById('main-div'));
 
-ReactDOM.render(jsx , document.getElementById('main-div'));
+//.then(()=>{}) has only been made possible by 'return database.ref.....' in actions/startSetExpenses
+store.dispatch(startSetExpenses()).then(()=>{
+    ReactDOM.render(jsx , document.getElementById('main-div'));
+})
 
 

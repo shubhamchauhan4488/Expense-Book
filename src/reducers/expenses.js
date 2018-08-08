@@ -21,6 +21,8 @@ const expensesReducer = (state = expensesReducerDefault, action) => {
                 return expense
             }
         })
+        case 'SetExpenses' :
+            return action.expenses
     default : 
     return state;
     }
