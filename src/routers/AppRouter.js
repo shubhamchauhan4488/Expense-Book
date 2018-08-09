@@ -2,13 +2,12 @@ import { Router, Route, NavLink, Link, Switch} from 'react-router-dom';
 //Below is the function we use to create our own history
 import createHistory from "history/createBrowserHistory";
 import React from 'react';
-import Header from './../components/Header';
 import ExpenseDashboardPage from './../components/ExpenseDashboardPage';
 import AddExpensePage from './../components/AddExpensePage';
 import EditExpensePage from './../components/EditExpensePage';
-import HelpPage from './../components/HelpPage';
 import NotFoundPage from './../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
+import PrivateRoute from './PrivateRoute'
 
 //exporting and accessing anywhere
 export const history = createHistory();
@@ -20,18 +19,17 @@ const AppRouter = () => (
     // <BrowserRouter> //This already has history built-in, to manually access history anywhere we like do:
     <Router history = {history}>
     <div>
-    <Header/>
     <Switch>
         <Route path = "/" component = {LoginPage} exact = {true}/> 
-        <Route path = "/dashboard" component = {ExpenseDashboardPage} /> 
-        <Route path = "/create" component = {AddExpensePage} /> 
-        <Route path = "/edit/:id" component = {EditExpensePage} /> 
-        <Route path = "/help" component = {HelpPage} /> 
+        <PrivateRoute path = "/dashboard" component = {ExpenseDashboardPage} /> 
+        <PrivateRoute path = "/create" component = {AddExpensePage} /> 
+        <PrivateRoute path = "/edit/:id" component = {EditExpensePage} /> 
         <Route component = {NotFoundPage} />
     </Switch>
     </div>
     </Router>
 )
+//Note : 
 // :id this way we can  pass params in props and access using props.match.params.id
-
+// Private route is used so that no one can directly access the URL to other pages, like when they are logged out
 export default AppRouter;

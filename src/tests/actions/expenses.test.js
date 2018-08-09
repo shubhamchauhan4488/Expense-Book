@@ -6,6 +6,9 @@ import database from '../../firebase/firebase'
 // test("Should test add expense actin object")
 
 const createMockStore = configureMockStore([thunk]) //passing the middleware that we are using
+const uid = '123asdf'
+const defaultAuthState = { auth : { uid : uid } };
+
 
 beforeEach((done) =>{
     const expensesFirebaseData = {}
@@ -19,7 +22,7 @@ beforeEach((done) =>{
         }
     })
     //To allow the beforeEach to wait for data pushing to firebase
-    database.ref('expenses').set(expensesFirebaseData).then(() => {
+    database.ref(`users/${uid}/expenses`).set(expensesFirebaseData).then(() => {
     done();
     })
 })
@@ -36,7 +39,7 @@ test("Should setup remove expense action object", () => {
 })
 test("Should remove expense from firebase", (done) => {
     const id = expensesArray[2].id
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     store.dispatch(startRemoveExpense(id)).then(() => {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
@@ -44,7 +47,7 @@ test("Should remove expense from firebase", (done) => {
             expenseID : id
         })
     //'return' for chaining promise with 'then((sanpshot))
-    return database.ref(`expenses/${id}`).once('value');
+    return database.ref(`users/${uid}/expenses/${id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toBeFalsy();
         done();
@@ -62,7 +65,7 @@ test("Should setup edit expense action object", () => {
     })
 })
 test("Should edit expense on firebase", (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const actions = store.getActions();
     // const updates = { amount : 1234 }
     store.dispatch(startEditExpense(expensesArray[2].id, expensesArray[2])).then(() => {
@@ -71,7 +74,7 @@ test("Should edit expense on firebase", (done) => {
             id : expensesArray[2].id,
             updates : expensesArray[2]
         })
-        return database.ref(`expenses/${expensesArray[2].id}`).once('value');
+        return database.ref(`users/${uid}/expenses/${expensesArray[2].id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual({
             id : expensesArray[2].id,
@@ -98,7 +101,7 @@ test("Should setup add expense action object WITH provided values", () =>{
 
 test("Should add expense to database and redux store", (done) => {
     //we will be creating a mock redux store for this 
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expenseData = {
         description : 'Water Bill',
         note : 'to be shared by all',
@@ -124,7 +127,7 @@ test("Should add expense to database and redux store", (done) => {
         })
 
         //For promise chaining
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+        return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
      
     })
     .then((snapshot) => {
@@ -139,7 +142,7 @@ test("Should add expense to database and redux store", (done) => {
 
 test("Should add expense to database and redux store WITH DEFAULT values", (done) => {
     //we will be creating a mock redux store for this 
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expenseDefaultData = {
         description : '',
         note : '',
@@ -158,7 +161,7 @@ test("Should add expense to database and redux store WITH DEFAULT values", (done
         })
 
         //For promise chaining
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+        return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
      
     })
     .then((snapshot) => {
@@ -179,7 +182,7 @@ test("Should setup set expense action object with data passed", () => {
 })
 
 test("Should fetch the data from firebase", (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     store.dispatch(startSetExpenses()).then(() => {
         const actions = store.getActions();
 

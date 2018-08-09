@@ -11,7 +11,7 @@ import './styles/styles.scss';
 
 import AppRouter, { history } from './routers/AppRouter'//now we can use history.push just like used in components
 import { startSetExpenses } from './actions/expenses'
-import { setTextFilter } from './actions/filters'
+import { login, logout } from './actions/auth'
 import getVisibleExpenses from './selectors/expenses'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
@@ -53,11 +53,14 @@ const renderApp = () => {
         ReactDOM.render(jsx , document.getElementById('main-div'));
         rendered = true;
     }
-   
 }
 
 firebase.auth().onAuthStateChanged((user) => {
     if(user){
+        //We are dispatching login and logout here and not where we are declaring asynchronous actions b'cause 
+        //sometimes the user may be logged in and we need to direct him to dashboard, 
+        //the asynch actions will only be called if someone explicitly logs in and logs out, not when user us implicity logged in i. already logged in
+        store.dispatch(login(user.uid))
         //.then(()=>{}) has only been made possible by 'return database.ref.....' in actions/startSetExpenses
         store.dispatch(startSetExpenses()).then(()=>{
             renderApp();
@@ -68,6 +71,7 @@ firebase.auth().onAuthStateChanged((user) => {
         }
 
     }else{
+        store.dispatch(logout())
         renderApp()
         console.log('Logged out')
         history.push('/')

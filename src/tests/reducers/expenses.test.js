@@ -18,7 +18,6 @@ test("should test add expense reducer", () =>{
             createdAt : 908049
         }
     }
-
     const result = expensesReducer(expensesArray, addExpenseActionObject);
     expect(result).toEqual([...expensesArray, addExpenseActionObject.expense ] );
 })
