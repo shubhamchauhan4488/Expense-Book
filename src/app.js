@@ -8,7 +8,8 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss';
-import AppRouter from './routers/AppRouter'
+
+import AppRouter, { history } from './routers/AppRouter'//now we can use history.push just like used in components
 import { startSetExpenses } from './actions/expenses'
 import { setTextFilter } from './actions/filters'
 import getVisibleExpenses from './selectors/expenses'
@@ -16,7 +17,7 @@ import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import 'react-dates/lib/css/_datepicker.css'
 //Just to check the connection to firebase : 
-import './firebase//firebase'
+import { firebase } from './firebase//firebase'
 // import './playground/promises'
 
 
@@ -46,9 +47,29 @@ const jsx = (
 )
 ReactDOM.render(<p>Loading...</p> , document.getElementById('main-div'));
 
-//.then(()=>{}) has only been made possible by 'return database.ref.....' in actions/startSetExpenses
-store.dispatch(startSetExpenses()).then(()=>{
-    ReactDOM.render(jsx , document.getElementById('main-div'));
+let rendered = false;
+const renderApp = () => {
+    if(!rendered){
+        ReactDOM.render(jsx , document.getElementById('main-div'));
+        rendered = true;
+    }
+   
+}
+
+firebase.auth().onAuthStateChanged((user) => {
+    if(user){
+        //.then(()=>{}) has only been made possible by 'return database.ref.....' in actions/startSetExpenses
+        store.dispatch(startSetExpenses()).then(()=>{
+            renderApp();
+        });
+
+        if(history.location.pathname === '/'){
+            history.push('/dashboard');
+        }
+
+    }else{
+        renderApp()
+        console.log('Logged out')
+        history.push('/')
+    }
 })
-
-

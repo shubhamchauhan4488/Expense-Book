@@ -2,8 +2,7 @@
 import React from "react";
 import { shallow } from 'enzyme'
 // import toJson from 'enzyme-to-json'
-import Header from '../../components/Header'
-import expenses from "../../reducers/expenses";
+import {Header} from '../../components/Header'
 
 // test("Should render Header correctly", () => {
 //     const renderer = new ReactShallowRenderer();
@@ -13,8 +12,16 @@ import expenses from "../../reducers/expenses";
 // })  
 
 test("Should render Header correctly", () => {
- const wrapper = shallow(<Header/>);
+ const wrapper = shallow(<Header startLogout={() => { }} />);
  expect(wrapper).toMatchSnapshot();
 //  expect(wrapper.find('h1').text()).toBe('Expensify');
 }
 )
+
+//Now the header also has Logout button, including tests for that
+test("Should call the startLogout on button click", () => {
+    const startLogoutSpy =  jest.fn()
+    const wrapper = shallow(<Header startLogout={startLogoutSpy} />);;
+    wrapper.find('button').simulate('click');
+    expect(startLogoutSpy).toHaveBeenCalled();
+})
