@@ -1,3 +1,7 @@
+*{
+    box-sizing : border-box;
+}
+    
 //'_' is written for defining a partial file 
 //Here body file will contain all the major styling lke font-color and size 
 html{
@@ -6,7 +10,7 @@ html{
 body{
     font-family:Helvetica, Arial, sans-serif;
     font-size: $s-size;
-    
+    line-height: 1.6
 }
 
 //We will be dealing with 'rem' and not px b'cause rem is more useful for accessibility devices

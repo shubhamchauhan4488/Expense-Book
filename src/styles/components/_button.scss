@@ -1,0 +1,22 @@
+.button {
+    color : white;
+    border-radius: 3px;
+    padding: $s-size;
+    background-color: $grey;
+    font-weight: 300;
+    font-size : $font-size-large;
+    border: none;
+    //properties added to make a link look like a button
+    display: inline-block;  
+    line-height: 1;
+    text-decoration: none;
+}
+
+//creating modifer class for logout 
+.button--link {
+    background : none;
+}
+
+.button-secondary {
+    background-color: #ba0000;
+}

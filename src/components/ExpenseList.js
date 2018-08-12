@@ -5,18 +5,21 @@ import getVisibleExpenses from "../selectors/expenses";
 
 //we are exporting this separately b'cause we need an un-connected component for testing, it should not be connected to the store
 export const ExpenseList = (props) => (
-    <div>
-        {props.expenses.length === 0 ? (
-            <p>No Expenses to display</p>
-        ) : (
-            props.expenses.map((expense) => {
-                return(
-                    <ExpenseListItem key = {expense.id} {...expense}></ExpenseListItem>
-              )
-            })
-        )}
-            
-   
+    <div className = "container">
+        <div className = "list-header">
+            <div className = "show-for-mobile">Expenses</div>
+            <div className = "show-for-desktop">Expense</div>
+            <div className = "show-for-desktop">Amount</div>
+        </div>
+            {props.expenses.length === 0 ? (
+                <p>No Expenses to display</p>
+            ) : (
+                props.expenses.map((expense) => {
+                    return(
+                        <ExpenseListItem key = {expense.id} {...expense}></ExpenseListItem>
+                )
+                })
+            )}
     </div>
 )
 

@@ -1,0 +1,12 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    > * {  //'>' means direct descendents  , '*' means all children
+        margin-bottom: $s-size;
+    }
+}
+
+.form-error{
+    font-style: italic;
+    margin-bottom: $s-size;
+}

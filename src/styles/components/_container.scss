@@ -1,0 +1,5 @@
+.container{
+    max-width: 80 rem;
+    margin : 0 auto;  //means that if width is 10000 px 100 on left and right will be distributed
+    padding : 0 $m-size;
+}
