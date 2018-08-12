@@ -11,8 +11,11 @@ export const ExpenseList = (props) => (
             <div className = "show-for-desktop">Expense</div>
             <div className = "show-for-desktop">Amount</div>
         </div>
+        <div className = "list-content">
             {props.expenses.length === 0 ? (
-                <p>No Expenses to display</p>
+                <div className = "list-item list-item--error">
+                  <p>No Expenses to display</p>
+                </div>
             ) : (
                 props.expenses.map((expense) => {
                     return(
@@ -20,6 +23,7 @@ export const ExpenseList = (props) => (
                 )
                 })
             )}
+        </div>
     </div>
 )
 

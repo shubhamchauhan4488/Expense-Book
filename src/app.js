@@ -19,7 +19,7 @@ import 'react-dates/lib/css/_datepicker.css'
 //Just to check the connection to firebase : 
 import { firebase } from './firebase//firebase'
 // import './playground/promises'
-
+import LoadingPage from './components/LoadingPage'
 
 const store = configureStore();
 // store.dispatch(addExpense( {description : 'Gas Bill', amount : '5555', createdAt : 908049}))
@@ -45,7 +45,7 @@ const jsx = (
         <AppRouter/>
     </Provider>
 )
-ReactDOM.render(<p>Loading...</p> , document.getElementById('main-div'));
+ReactDOM.render(<LoadingPage /> , document.getElementById('main-div'));
 
 let rendered = false;
 const renderApp = () => {
