@@ -6,7 +6,11 @@
     font-size: $font-size-large;
     font-weight: 300;
     padding: $s-size;
-    height : 50px
+    height : 50px;
+    @media( max-width : $mobile-breakpoint){
+        font-size: $font-size-small;
+        height : 50px;
+    }
 }
 
 //Using inheritance in sass-lang
