@@ -23,7 +23,7 @@ module.exports = (env) => {
     return {
         //entry : where webpack should start
         //Refer to webpack.js.org
-        //entry can be a 'string', od array of string. To use polyfill we use the following entry:
+        //entry can be a 'string', or array of string. To use polyfill we use the following entry:
         entry : ['babel-polyfill','./src/app.js'],
         output : {
             path : path.join(__dirname, 'public', 'dist'), //where do we want to put the webpack file i.e bundle.js
