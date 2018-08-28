@@ -15,10 +15,12 @@ export default class ExpenseForm extends React.Component {
             description : props.expense ? props.expense.description : '',
             note : props.expense ? props.expense.note : '',
             amount : props.expense ? (props.expense.amount/100).toString() : '',
+            category : props.expense ? (props.expense.category) : 'Household',
             createdAt : props.expense ? moment(props.expense.createdAt) :moment(),
             calenderFocused  : false,
             error : ''
         }
+        this.isSelected = this.isSelected.bind(this)
     }
     // state = {
     //     description : '',
@@ -62,6 +64,14 @@ export default class ExpenseForm extends React.Component {
             })
         }
     }
+    onCategoryChange = (e) => {
+        const category = e.target.value
+            this.setState(() => {
+                return {
+                    category : category
+                }
+            })
+    }
     onDateChange = (createdAt) => {
         this.setState(() => {
             if(createdAt){
@@ -99,12 +109,16 @@ export default class ExpenseForm extends React.Component {
                 description : this.state.description,
                 amount : (parseFloat(this.state.amount, 10))*100,
                 note : this.state.note,
+                category : this.state.category,
                 createdAt : this.state.createdAt.valueOf()
             })
-       
     }
 }
-    
+    isSelected(category){
+        if (this.state.category){
+            return this.state.category === category ? true : false;
+        }
+    }
 
     render(){
         return(
@@ -119,6 +133,7 @@ export default class ExpenseForm extends React.Component {
                 value = {this.state.description}
                 onChange = {this.onDescriptionChange}
                 />
+
                 <input
                 type = 'text'
                 className = "text-input"
@@ -126,6 +141,21 @@ export default class ExpenseForm extends React.Component {
                 value = {this.state.amount}
                 onChange = {this.onAmountChange}
                 />
+
+                <select
+                className = "text-input"
+                onChange = {this.onCategoryChange}
+                >
+                    <option value = "Household" selected = {this.isSelected("Household")}>Household</option>
+                    <option value = "Rent" selected = {this.isSelected("Rent")}>Rent</option> 
+                    <option value = "Utilities Bill" selected = {this.isSelected("Utilities Bill")}>Utility Bills</option>
+                    <option value = "Entertainment" selected = {this.isSelected("Entertainment")}>Entertainment</option> 
+                    <option value = "Health" selected = {this.isSelected("Health")}>Health</option> 
+                    <option value = "Transport" selected = {this.isSelected("Transport")}>Transport</option> 
+                    <option value = "Education" selected = {this.isSelected("Education")}>Education</option> 
+                    <option value = "Miscellaneous" selected = {this.isSelected("Miscellaneous")}>Miscellaneous</option> 
+                </select>
+                
                 <SingleDatePicker 
                 date = {this.state.createdAt}
                 onDateChange={this.onDateChange}
@@ -136,7 +166,7 @@ export default class ExpenseForm extends React.Component {
                 <textarea 
                 className = "textarea-input"
                 placeholder = "Add a note for this expense (optional)"
-                value = {this.note}
+                value = {this.state.note}
                 onChange = {this.onNoteChange}
                 >
                 </textarea>

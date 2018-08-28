@@ -22,7 +22,7 @@ import { startAddExpense } from '../actions/expenses';
 //For testing we will modify the component : New class component:
 export class AddExpensePage extends React.Component{
     onSubmit = (expense) => {
-        console.log(expense)
+        console.log('expenses as of now',expense)
         this.props.startAddExpense(expense) //calling the addExpense inside mapDispatchToProps for dispatch handling
         this.props.history.push('/')
     }
@@ -44,7 +44,7 @@ export class AddExpensePage extends React.Component{
     }
 }
 
-//this function wwe will use to handle the dispatch here itself, instead of handling at:
+//this function we will use to handle the dispatch here itself, instead of handling at:
 // props.dispatch(addExpense(expense));
 // we do this b'cause while testing we will have to pass spy fn
 // and in this case we have to pass a component in a spy fn which will come out ot be very complex

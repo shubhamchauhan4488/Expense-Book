@@ -20,6 +20,29 @@ exports[`Should render ExpenseForm Correctly 1`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -100,6 +123,7 @@ exports[`Should render ExpenseForm Correctly 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -131,6 +155,26 @@ exports[`Should render ExpenseForm Correctly with expnse DATA 1`] = `
     type="text"
     value="1312.45"
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -211,6 +255,7 @@ exports[`Should render ExpenseForm Correctly with expnse DATA 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -242,6 +287,29 @@ exports[`Should render on amount change Correctly with INVALID Input 1`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -322,6 +390,7 @@ exports[`Should render on amount change Correctly with INVALID Input 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -353,6 +422,29 @@ exports[`Should render on amount change Correctly with valid Input 1`] = `
     type="text"
     value="2134"
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -433,6 +525,7 @@ exports[`Should render on amount change Correctly with valid Input 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -464,6 +557,29 @@ exports[`Should render on description change Correctly 1`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -544,6 +660,7 @@ exports[`Should render on description change Correctly 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -575,6 +692,29 @@ exports[`Should render on form submit Correctly 1`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -655,6 +795,7 @@ exports[`Should render on form submit Correctly 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -691,6 +832,29 @@ exports[`Should render on form submit Correctly 2`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -771,6 +935,7 @@ exports[`Should render on form submit Correctly 2`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value=""
   />
   <div>
     <button
@@ -802,6 +967,29 @@ exports[`Should render on note textarea change Correctly 1`] = `
     type="text"
     value=""
   />
+  <select
+    className="text-input"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="Household"
+    >
+      Household
+    </option>
+    <option
+      selected={false}
+      value="Rent"
+    >
+      Rent
+    </option>
+    <option
+      selected={false}
+      value="Bills"
+    >
+      Bills
+    </option>
+  </select>
   <SingleDatePicker
     anchorDirection="left"
     customCloseIcon={null}
@@ -882,6 +1070,7 @@ exports[`Should render on note textarea change Correctly 1`] = `
     className="textarea-input"
     onChange={[Function]}
     placeholder="Add a note for this expense (optional)"
+    value="New Note"
   />
   <div>
     <button

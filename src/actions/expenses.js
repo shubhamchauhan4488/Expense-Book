@@ -40,10 +40,11 @@ export const startAddExpense = (expenseData = {}) => {
         description = '',
         note = '', 
         amount = 0, 
+        category  = '',
         createdAt = 0
     } = expenseData;
 
-    const expense = { description ,note ,amount ,createdAt }
+    const expense = { description ,note ,amount,category ,createdAt }
 
     //adding return help us to achieve promise chaining  and call .then while making assertions in test cases
     //then callback for success case gets called with push, and has access to ref
