@@ -101,12 +101,12 @@ class ExpenseCharts extends Component {
 								this.state.educationSum,
 								this.state.miscellaneousSum],
 							backgroundColor : [
-								'rgba(255,99,132,0.6)',
-								'rgba(255,23,100,0.6)',
-								'rgba(255,222,132,0.6)',
-								'rgba(255,99,132,0.6)',
-								'rgba(255,111,100,0.6)',
-								'rgba(255,22,12,0.6)',
+								'rgba(221,28,28,0.6)',
+								'rgba(77,218,234,0.6)',
+								'rgba(52, 122, 42,0.6)',
+								'rgba(242, 238, 116,0.6)',
+								'rgba(200, 116, 242,0.6)',
+								'rgba(219, 168, 189,0.6)',
 								'rgba(255,45,152,0.6)',
 								'rgba(255,9,132,0.6)'
 							]
