@@ -18,7 +18,7 @@ import { Provider } from 'react-redux'
 import 'react-dates/lib/css/_datepicker.css'
 //Just to check the connection to firebase : 
 import { firebase } from './firebase//firebase'
-// import './playground/promises'
+import './playground/promises'
 import LoadingPage from './components/LoadingPage'
 
 const store = configureStore();

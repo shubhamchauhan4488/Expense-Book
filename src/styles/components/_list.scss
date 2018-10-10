@@ -1,55 +1,64 @@
 .list-header {
+  background-color: $light-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $s-size $m-size;
+  color: darken($light-grey, 35%);
+  border: 1px solid darken($light-grey, 7%);
+}
+
+.list-item {
+  padding: $m-size;
+  color: $dark-grey;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  // align-items: center;
+  border: 1px solid darken($light-grey, 7%);
+  border-top: none;
+  transition: background 0.3s ease;
+  &:hover {
     background-color: $light-grey;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding :$s-size $m-size;
-    color : darken($light-grey, 35%);
-    border : 1px solid darken($light-grey, 7%)
+  }
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    padding: $s-size $s-size $s-size $m-size;
+  }
 }
-
-.list-item { 
-    padding : $m-size;
-    color : $dark-grey;
-    display: flex;
-    justify-content: space-between;
-    text-decoration: none ;
-    // align-items: center;
-    border: 1px solid darken($light-grey, 7%);
-    border-top : none;
-    transition: background .3s ease;
-    &:hover {
-        background-color: $light-grey;
-    }
-    @media( max-width : $mobile-breakpoint){
-        flex-direction: column;
-        padding : $s-size $s-size $s-size $m-size;
-    }
+.list-item__title {
+  margin: 0 $m-size 0 0;
+  @media (max-width: $mobile-breakpoint) {
+    margin: 0 $s-size 0 0;
+  }
+  word-break: break-all;
 }
-.list-item__title{
-    margin : 0 $m-size $m-size 0;
-    @media( max-width : $mobile-breakpoint){
-        margin : 0 $s-size $s-size 0;
-    }
-    word-break: break-all;
+.list-item__subtitle {
+  font-size: $s-size;
+  font-weight: 200;
+  @media (max-width: $mobile-breakpoint) {
+    margin: 0 $s-size 0 0;
+  }
+  margin: $s-size $m-size 0 0;
 }
-.list-item__subtitle{
-    font-size : $s-size;
+.list-item__amount {
+  @media (max-width: $mobile-breakpoint) {
+    margin-top: 0;
+  }
+  margin-top: $m-size;
 }
-
 .list-content {
-    margin-bottom: $l-size;
-    @media (max-width : mobile-breakpoint){
-        margin-bottom: $s-size;
-    }
+  margin-bottom: $l-size;
+  @media (max-width: mobile-breakpoint) {
+    margin-bottom: $s-size;
+  }
 }
 .list-item--error {
-    align-items: center;
-    justify-content: center;
-    padding : $s-size;
-    color : darken($light-grey, 15%);
-    &:hover {
-        background: none;
-    }
-    
+  align-items: center;
+  justify-content: center;
+  padding: $s-size;
+  color: darken($light-grey, 15%);
+  &:hover {
+    background: none;
+  }
 }

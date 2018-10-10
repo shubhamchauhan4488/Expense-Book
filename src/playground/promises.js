@@ -1,6 +1,7 @@
 import { setTimeout } from "timers";
 
 // const promise = new Promise((resolve,reject) => {
+    
 // //setTimeout: 1st arg: function to call, 2nd arg : delay needed before the function call
 //     setTimeout(() => {
 

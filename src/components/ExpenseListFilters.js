@@ -8,7 +8,6 @@ import { DateRangePicker } from 'react-dates'
 export class ExpenseListFilters extends React.Component{
     onTextChange = (e) => {
         this.props.setTextFilter(e.target.value)
-        console.log(e.target.value)
     }
     onSortByChange = (e) => {
         if(e.target.value === 'date'){

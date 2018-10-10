@@ -3,23 +3,6 @@ import ExpenseForm from './ExpenseForm'
 import { connect } from "react-redux";
 import { startAddExpense } from '../actions/expenses';
 
-
-// const AddExpensePage = (props) => (
-//     <div>
-//     This is from AddExpensePage
-//     <ExpenseForm 
-//     onSubmit = {(expense) => {
-//         console.log(expense)
-//         props.dispatch(addExpense(expense));
-//         props.history.push('/')
-//     }}
-//     />
-//     </div>
-// )
-// // props.history.push('/') : to switch to pages without reloading the page
-// export default connect()(AddExpensePage)
-
-//For testing we will modify the component : New class component:
 export class AddExpensePage extends React.Component{
     onSubmit = (expense) => {
         console.log('expenses as of now',expense)
