@@ -16,4 +16,4 @@
 <p>Edit Expense Form : Allows the user to edit the selected expense</p>
 <img src="screenshots/EditExpense.png" />
 <p>Site Responsiveness : Site takes a slightly different layout in order to be responsive when mobile-breakpoint is reached</p>
-<img src="screenshots/Responsive.png" />
+<img src="screenshots/Responsive.png" width = "500" height = "600" />
