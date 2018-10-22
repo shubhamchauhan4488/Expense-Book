@@ -90,7 +90,7 @@ class ExpenseCharts extends Component {
 		const chartData = {
 						labels : ['Household', 'Utilities Bill', 'Rent', 'Entertainment', 'Health', 'Transport','Education', 'Miscellaneous'],
 						datasets  : [ {
-							label : 'Expenses',
+				
 							data : [
 								this.state.householdSum, 
 								this.state.utilitiesBillsSum, 
@@ -121,11 +121,15 @@ class ExpenseCharts extends Component {
 					title : {
 						display : true,
 						text : "Category wise expenses",
-						fontSize : 25
+						fontSize : 25,
+						margin: 20
 					},
 					legend : {
-						display :true,
-						position : 'right'
+						display : false,
+						position: 'left',
+						labels: {
+						boxWidth: 10
+						}
 					}
 				}}
 				/>

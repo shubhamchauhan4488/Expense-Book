@@ -1,7 +1,10 @@
 .charts {
     width : 80%;
     margin : 0 auto;
+    padding-bottom: $s-size;
     @media( max-width : $mobile-breakpoint){
         width : 100%;
+        padding: 0 $s-size $s-size $s-size;
+        height: 60px
     }
 }
