@@ -8,7 +8,7 @@ export const LoginPage = ({ startLogin }) => (
       <h1 className="box-layout__title ">ExpenseBook</h1>
       <img src="/images/expense-book-icon.png" width="30px" height="30" />
     </div>
-    <div className="box-layout">
+    <div className="box-layout">  
       <div className="box-layout__loginbox">
         <p> It's time to log your expenses and manage them</p>
         <button onClick={startLogin} className="button">

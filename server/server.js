@@ -14,7 +14,8 @@ app.use(express.static(publicPath));
 app.get("*", (request, response) => {
   response.sendFile(path.join(publicPath, "index.html"));
 });
+
 app.listen(port, () => {
-  //a callback function called if the server is setup on the port mentioned : 4000
+  //Callback function called if the server is setup on the port mentioned : 4000
   console.log("Server is UP!");
 });
